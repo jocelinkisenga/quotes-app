@@ -22,3 +22,4 @@ import Route from '@ioc:Adonis/Core/Route'
 
 
 Route.get('/','PostsController.index')as('home')
+Route.get('/new','PostsController.create')as('post.create')

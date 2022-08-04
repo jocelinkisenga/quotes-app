@@ -5,10 +5,10 @@ export default class Post extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column
+  @column()
   public title:string
 
-  @column
+  @column()
   public content:string
 
   @column

@@ -1,10 +1,12 @@
  import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import {Post} from 'App/Models/Post'
-
+import Post from 'App/Models/Post'
+const post = new Post()
 export default class PostsController {
 
+
 	async index({view}:HttpContextContract){
-		return view.render('blog/index')
+		const posts = await Post.all()
+		return view.render('blog/index',{posts})
 	}
 
 	async create({view}:HttpContextContract){
@@ -12,10 +14,9 @@ export default class PostsController {
 	}
 
 	async store({request, response}:HttpContextContract){
-		await Post.create({
-			title: request.input('title'),
-			content:request.input('content')
-		})
-		return response.route('home')
+		post.title = request.input('title')
+		post.content = request.input('content')
+		await post.save()
+		
 	}
 }

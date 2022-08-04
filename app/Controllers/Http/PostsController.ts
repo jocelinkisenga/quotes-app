@@ -11,7 +11,11 @@ export default class PostsController {
 		return view.render('blog.create_post')
 	}
 
-	async store({request}:HttpContextContract){
-		
+	async store({request, response}:HttpContextContract){
+		await Post.create({
+			title: request.input('title'),
+			content:request.input('content')
+		})
+		return response.route('home')
 	}
 }

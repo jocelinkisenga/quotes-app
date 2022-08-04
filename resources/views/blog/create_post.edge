@@ -1,8 +1,16 @@
-@layouts('layout/main')
+@layout('layouts/main')
 @section('content')
 	<form action="" method="post">
-	<input name="title" type="text">
-	<textarea name="content">
+	<div>
+	<label for="title">title</label>
+	<input id="title" name="title" class="form-control" type="text">
+	</div>
+	<div class="">
+	<label for="content">content</label>
+	<textarea id="content" name="content" class="form-control">
+	
 	</textarea>
+	</div><br>
+	<button type="submit" class="btn btn-primary">sauvegarder</button>
 	</form>
 @endsection
